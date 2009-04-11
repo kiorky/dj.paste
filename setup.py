@@ -24,9 +24,11 @@ setup(name='django.paste',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
+          'WebOb',
+          'PasteScript',
+          'Django',
       ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
+      entry_points={
+          'paste.app_factory': [ 'main=django.paste.paste:django_factory',]
+      },
       )
