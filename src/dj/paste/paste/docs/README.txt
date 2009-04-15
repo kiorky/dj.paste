@@ -25,8 +25,7 @@ your django settings ::
 
 DebuggedApplication App
 ------------------------
-With paste, just add another app entry with a django_settings_module  variable to point to
-your django settings ::
+With paste, just add another filter entry and enable debug:::
 
     [DEFAULT]
     debug=true
