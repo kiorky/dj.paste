@@ -3,7 +3,21 @@ import os
 
 version = '1.0'
 
-setup(name='django.paste',
+def read(rnames):
+    setupdir =  os.path.dirname( os.path.abspath(__file__))
+    return open(
+        os.path.join(setupdir, *rnames)
+    ).read()
+
+README = read((os.path.dirname(__file__),
+                      'src', 'dj', 'paste',
+                      'paste', 'docs', 'README.txt'))
+CHANGELOG  = read((os.path.dirname(__file__),
+                      'docs', 'HISTORY.txt'))
+TESTS  = read((os.path.dirname(__file__),
+                      'doctests', 'README.txt')) 
+long_description = '\n'.join([README, CHANGELOG]) + 'TESTS\n--------------\n'+TESTS+'\n\n'
+setup(name='dj.paste',
       version=version,
       description="Yet another WSGI Paste factory for paste",
       long_description=open("README.txt").read() + "\n" +
@@ -16,19 +30,25 @@ setup(name='django.paste',
       keywords='',
       author='Mathieu Pasquet',
       author_email='kiorky@cryptelium.net',
-      url='http://git.minitage.org/git/django.paste',
+      url='http://git.minitage.org/git/dj.paste',
       license='GPL',
-      packages=find_packages(exclude=['ez_setup']),
-      namespace_packages=['django', 'django.paste'],
+      namespace_packages=['dj', 'dj.paste'],
       include_package_data=True,
       zip_safe=False,
+      packages=find_packages('src'),
+      extras_require={'test': ['ipython', 'zope.testing', ]},
+      package_dir = {'': 'src'},
       install_requires=[
           'setuptools',
           'WebOb',
+          'Werkzeug',
           'PasteScript',
           'Django',
       ],
       entry_points={
-          'paste.app_factory': [ 'main=django.paste.paste:django_factory',]
+          'paste.app_factory': ['main=dj.paste.paste:django_factory',
+                               ],
+          'paste.filter_factory': ['debug=dj.paste.paste:debug_factory',
+                                  ]
       },
-      )
+     )
