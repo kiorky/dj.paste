@@ -1,5 +1,11 @@
 
 
+DOCTESTS
+================
+
+django factory
+-----------------------------------------
+
 Checking that everything is in place::
 
     >>> resp = app.get('/')

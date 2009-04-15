@@ -1,9 +1,3 @@
-================
-afpy.trac package
-================
-
-.. contents::
-
 What is dj.paste
 ==================
 

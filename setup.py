@@ -9,19 +9,20 @@ def read(rnames):
         os.path.join(setupdir, *rnames)
     ).read()
 
-README = read((os.path.dirname(__file__),
-                      'src', 'dj', 'paste',
-                      'paste', 'docs', 'README.txt'))
+README =read((os.path.dirname(__file__),'README.txt')) +\
+        read((os.path.dirname(__file__),
+              'src', 'dj', 'paste','paste',
+              'docs', 'README.txt'))
 CHANGELOG  = read((os.path.dirname(__file__),
                       'docs', 'HISTORY.txt'))
 TESTS  = read((os.path.dirname(__file__),
-                      'doctests', 'README.txt')) 
-long_description = '\n'.join([README, CHANGELOG]) + 'TESTS\n--------------\n'+TESTS+'\n\n'
+               'src', 'dj', 'paste','paste',
+               'doctests', 'README.txt'))
+long_description = '\n'.join([README, TESTS,CHANGELOG])+'\n\n'
 setup(name='dj.paste',
       version=version,
       description="Yet another WSGI Paste factory for paste",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      long_description=long_description,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Programming Language :: Python",
