@@ -7,7 +7,6 @@ from webob import Request, exc
 from paste.deploy.config import ConfigMiddleware
 
 from django.core.handlers.wsgi import WSGIHandler
-from django.core.servers.basehttp import AdminMediaHandler
 
 def django_factory(global_config, **local_config):
     """
@@ -24,7 +23,6 @@ def django_factory(global_config, **local_config):
     debug = False
     if global_config.get('debug', 'False').lower() == 'true':
         debug = True
-        app = AdminMediaHandler(app)
     def django_app(environ, start_response):
         environ['PATH_INFO'] = environ['SCRIPT_NAME'] + environ['PATH_INFO']
         req = Request(environ)
@@ -41,6 +39,6 @@ def django_factory(global_config, **local_config):
         if hasattr(app_iter, 'close'):
             result = [data for data in app_iter]
             app_iter.close()
-        return result #return [output]
+        return result 
     return django_app
 
