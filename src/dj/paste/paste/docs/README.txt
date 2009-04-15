@@ -20,8 +20,8 @@ your django settings ::
     / = foo
 
     [app:foo]
-    egg=afpy.trac
-    django_settings=foo.settings
+    use=egg:dj.paste
+    django_settings_module=foo.settings
 
 DebuggedApplication App
 ------------------------
@@ -38,7 +38,7 @@ your django settings ::
                 foo
 
     [app:foo]
-    egg=afpy.trac
+    use=egg:dj.paste
     django_settings=foo.settings
 
     [filer:exc]
