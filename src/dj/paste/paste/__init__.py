@@ -43,7 +43,6 @@ def django_factory(global_config, **local_config):
     dsm = local_config.get(dmk, '').strip() 
     app = WSGIHandler()
     def django_app(environ, start_response):
-        print dsm
         os.environ['DJANGO_SETTINGS_MODULE'] = dsm
         req = Request(environ)
         try:
