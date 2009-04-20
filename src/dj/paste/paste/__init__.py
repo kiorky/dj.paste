@@ -46,7 +46,7 @@ def django_factory(global_config, **local_config):
             debug.technical_500_response = null_500_response
 
     def django_app(environ, start_response):
-        environ['PATH_INFO'] = environ['SCRIPT_NAME'] + environ['PATH_INFO']
+        #environ['PATH_INFO'] = environ['SCRIPT_NAME'] + environ['PATH_INFO']
         req = Request(environ)
         try:
             resp = req.get_response(app)

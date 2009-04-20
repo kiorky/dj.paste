@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.2
+-----
+
+* fix script_path, see http://code.djangoproject.com/ticket/1516
+
 1.0 
 ----------------
 * Initial release
