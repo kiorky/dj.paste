@@ -30,9 +30,10 @@ def django_factory(global_config, **local_config):
     conf = global_config.copy()
     conf.update(**local_config)
     dmk = 'django_settings_module'
+    dsm = local_config.get(dmk, '').strip() 
+    os.environ['DJANGO_SETTINGS_MODULE'] = dsm
     if dmk in local_config:
-        os.environ['DJANGO_SETTINGS_MODULE'] = local_config[dmk].strip()
-        del local_config[dmk]
+        del local_config[dmk] 
     app = ConfigMiddleware(WSGIHandler(), conf)
     debug = False
     if global_config.get('debug', 'False').lower() == 'true':
@@ -47,6 +48,7 @@ def django_factory(global_config, **local_config):
 
     def django_app(environ, start_response):
         #environ['PATH_INFO'] = environ['SCRIPT_NAME'] + environ['PATH_INFO']
+        os.environ['DJANGO_SETTINGS_MODULE'] = dsm
         req = Request(environ)
         try:
             resp = req.get_response(app)
