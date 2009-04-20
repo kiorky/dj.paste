@@ -4,8 +4,6 @@ import traceback
 
 from webob import Request, exc
 
-from paste.deploy.config import ConfigMiddleware
-
 import pkg_resources
 dv = pkg_resources.working_set.by_key.get('django').version
 MIN_VERSION = '1.0.3'
@@ -26,15 +24,11 @@ def django_factory(global_config, **local_config):
     """
     A paste.httpfactory to wrap a django WSGI based application.
     """
+    print "called"
+    apps = {}
     log = logging.getLogger('dj.paste')
     conf = global_config.copy()
     conf.update(**local_config)
-    dmk = 'django_settings_module'
-    dsm = local_config.get(dmk, '').strip() 
-    os.environ['DJANGO_SETTINGS_MODULE'] = dsm
-    if dmk in local_config:
-        del local_config[dmk] 
-    app = ConfigMiddleware(WSGIHandler(), conf)
     debug = False
     if global_config.get('debug', 'False').lower() == 'true':
         debug = True
@@ -45,9 +39,11 @@ def django_factory(global_config, **local_config):
                 raise exc_type, exc_value, tb
             from django.views import debug
             debug.technical_500_response = null_500_response
-
+    dmk = 'django_settings_module'
+    dsm = local_config.get(dmk, '').strip() 
+    app = WSGIHandler()
     def django_app(environ, start_response):
-        #environ['PATH_INFO'] = environ['SCRIPT_NAME'] + environ['PATH_INFO']
+        print dsm
         os.environ['DJANGO_SETTINGS_MODULE'] = dsm
         req = Request(environ)
         try:
