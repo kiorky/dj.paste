@@ -46,20 +46,20 @@ class FakeSettings(conf.LazySettings):
             raise AttributeError("Is it really happens? " + \
                 "You want to retrieve __file__ but I'm a virtual module")
         not_wrapped = ['fake_settings_modules', 'load',
-                       'configure', '_target', 'get_target', 
+                       'configure', '_target', 'get_target',
                        'configure', 'configured']
         if not attr in not_wrapped:
             modulename, module = self.load()
             if modulename in self.fake_settings_modules:
                 return getattr(module, attr)
             else:
-                raise Exception('Cannont load %s' % module)
+                raise Exception('Cannot load %s' % module)
         else:
             return object.__getattribute__(self, attr)
 
     def __setattr__(self, name, value):
         not_wrapped = ['fake_settings_modules', 'load',
-                       'configure', '_target', 'get_target', 
+                       'configure', '_target', 'get_target',
                        'configure', 'configured']
         if not name in not_wrapped:
             modulename, module = self.load()
@@ -124,7 +124,7 @@ def django_factory(global_config, **local_config):
             from django.views import debug
             debug.technical_500_response = null_500_response
     dmk = 'django_settings_module'
-    dsm = wconf.get(dmk, '').strip() 
+    dsm = wconf.get(dmk, '').strip()
     conf.settings = FakeSettings()
     app = WSGIHandler()
     def django_app(environ, start_response):
