@@ -3,7 +3,8 @@ What is dj.paste
 
 It is just another wsgi wrappers:
 
-    * one for django
+    * one for django, it even allows you to have multiple djangos in the same
+      paster.
     * one for getting an app factory for werkzeug's DebuggedApplication
 
 How to use dj.paste
