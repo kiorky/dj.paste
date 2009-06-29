@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.4'
+version = '1.5'
 
 def read(rnames):
     setupdir =  os.path.dirname( os.path.abspath(__file__))
@@ -32,7 +32,7 @@ setup(name='dj.paste',
       author='Mathieu Pasquet',
       author_email='kiorky@cryptelium.net',
       url='http://git.minitage.org/git/others/dj.paste',
-      license='GPL',
+      license='BSD',
       namespace_packages=['dj', 'dj.paste'],
       include_package_data=True,
       zip_safe=False,
