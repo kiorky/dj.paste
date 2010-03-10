@@ -17,7 +17,7 @@ It is just another `PythonPaste applications`_ wsgi wrappers:
     * ``dj.paste#mono`` or only ``dj.paste``:
         A paste factory to use when you have only one django on your instance
 
-    * ``dj.paste#multi`` or only ``dj.paste``:
+    * ``dj.paste#multi``
         A paste factory to use when you have more than one django on your instance 
         but be careful that there is a fakeDjangoModule trick that can lead to problems (not seen so far)
 
