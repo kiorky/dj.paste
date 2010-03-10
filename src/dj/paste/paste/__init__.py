@@ -125,7 +125,8 @@ def django_factory(global_config, **local_config):
             debug.technical_500_response = null_500_response
     dmk = 'django_settings_module'
     dsm = wconf.get(dmk, '').strip()
-    conf.settings = FakeSettings()
+    if wconf.get('multi', '') == 'true':
+        conf.settings = FakeSettings()
     app = WSGIHandler()
     def django_app(environ, start_response):
         os.environ[conf.ENVIRONMENT_VARIABLE] = dsm
@@ -141,4 +142,12 @@ def django_factory(global_config, **local_config):
             else:
                 raise
     return django_app
+
+def django_multi_factory(global_config, **local_config):
+    """
+    A paste.httpfactory to wrap a django WSGI based application.
+    """
+    if not local_config: local_config = {}
+    local_config['multi'] = 'true'
+    return django_factory(global_config, **local_config)
 

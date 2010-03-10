@@ -1,24 +1,27 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.5'
+version = '1.6'
 
-def read(rnames):
+def read(*rnames):
     setupdir =  os.path.dirname( os.path.abspath(__file__))
     return open(
         os.path.join(setupdir, *rnames)
     ).read()
 
-README =read((os.path.dirname(__file__),'README.txt')) +\
-        read((os.path.dirname(__file__),
-              'src', 'dj', 'paste','paste',
-              'docs', 'README.txt'))
-CHANGELOG  = read((os.path.dirname(__file__),
-                      'docs', 'HISTORY.txt'))
-TESTS  = read((os.path.dirname(__file__),
-               'src', 'dj', 'paste','paste',
-               'doctests', 'README.txt'))
-long_description = '\n'.join([README, TESTS,CHANGELOG])+'\n\n'
+p = os.path.dirname(__file__)
+README =read(p,'README.txt')
+CHANGELOG  = read(p, 'docs', 'HISTORY.txt')
+TESTS  = read(p, 'src', 'dj', 'paste', 'paste', 'doctests', 'README.txt')
+
+long_description = '%s' % (
+    README
+    + '\n'
+    + TESTS
+    + '\n'
+    + CHANGELOG
+    +'\n'
+)
 setup(name='dj.paste',
       version=version,
       description="Yet another WSGI Paste factory for paste",
@@ -40,7 +43,7 @@ setup(name='dj.paste',
       extras_require={'test': ['ipython', 'zope.testing', ]},
       package_dir = {'': 'src'},
       install_requires=[
-          'setuptools',
+          #'setuptools',
           'WebOb',
           'Werkzeug',
           'PasteScript',
@@ -48,6 +51,8 @@ setup(name='dj.paste',
       ],
       entry_points={
           'paste.app_factory': ['main=dj.paste.paste:django_factory',
+                                'multi=dj.paste.paste:multi_django_factory', 
+                                'mono=dj.paste.paste:django_factory', 
                                ],
           'paste.filter_factory': ['debug=dj.paste.paste:debug_factory',
                                   ]
