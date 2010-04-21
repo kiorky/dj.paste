@@ -12,7 +12,7 @@ def read(*rnames):
 p = os.path.dirname(__file__)
 README =read(p,'README.txt')
 CHANGELOG  = read(p, 'docs', 'HISTORY.txt')
-TESTS  = read(p, 'src', 'dj', 'paste', 'paste', 'doctests', 'README.txt')
+TESTS  = read(p, 'src', 'dj', 'paste', 'README.txt')
 
 long_description = '%s' % (
     README

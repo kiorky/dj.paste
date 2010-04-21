@@ -64,7 +64,7 @@ def doc_suite(test_dir, setUp=None, tearDown=None, globs=None):
     if package_dir not in sys.path:
         sys.path.append(package_dir)
 
-    doctest_dir = os.path.join(package_dir, 'doctests')
+    doctest_dir = os.path.join(package_dir)
 
     # filtering files on extension
     docs = [os.path.join(doctest_dir, doc) for doc in
