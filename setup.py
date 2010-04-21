@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.7'
+version = '1.8'
 
 def read(*rnames):
     setupdir =  os.path.dirname( os.path.abspath(__file__))

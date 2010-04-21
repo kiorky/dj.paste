@@ -1,9 +1,11 @@
 Changelog
 =========
 
-UP
+1.8
 ---------
-    - add a mono factory (and now the default)
+* add a mono factory (and now the default)
+* cleanup
+
 
 1.3 - 1.4
 ----------
