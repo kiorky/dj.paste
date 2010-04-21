@@ -7,7 +7,6 @@ Yet another `paste`_ factories for django
 
 .. contents::
 
-======================================
 Makina Corpus sponsorised software
 ======================================
 |makinacom|_
