@@ -11,17 +11,6 @@ MIN_VERSION = '1.0.3'
 
 from django.core.handlers.wsgi import WSGIHandler
 from django import conf
-from werkzeug import DebuggedApplication
-
-def debug_factory(global_config, **local_config):
-    debug = True
-    if 'true' in [global_config.get('evalex', '').lower(),
-                  global_config.get('debug', '').lower(),
-                  local_config.get('evalex', '').lower()]:
-        debug = True
-    def filter(app):
-        return DebuggedApplication(app, debug)
-    return filter
 
 class FakeSettings(conf.LazySettings):
     """

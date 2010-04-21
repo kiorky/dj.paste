@@ -24,7 +24,7 @@ long_description = '%s' % (
 )
 setup(name='dj.paste',
       version=version,
-      description="Yet another WSGI Paste factory for paste sponsorised by Makina Corpus",
+      description="Yet another WSGI Paste factory for paste sponsored by Makina Corpus",
       long_description=long_description,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
@@ -45,7 +45,6 @@ setup(name='dj.paste',
       install_requires=[
           #'setuptools',
           'WebOb',
-          'Werkzeug',
           'PasteScript',
           'Django',
       ],
