@@ -55,8 +55,9 @@ setup(name='dj.paste',
 
                                 'mono=dj.paste.paste:django_factory', 
                                ],
+          'paste.filter_app_factory': [ 'weberror=dj.paste.paste:weberror_wrapper' ,
+                                      ],
           'paste.filter_factory': ['debug=dj.paste.paste:debug_factory',
-                                   'weberror=dj.paste.paste:weberror_wrapper' ,
                                   ]
       },
      )
