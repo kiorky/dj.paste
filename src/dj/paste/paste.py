@@ -9,6 +9,8 @@ import pkg_resources
 dv = pkg_resources.working_set.by_key.get('django').version
 MIN_VERSION = '1.0.3'
 
+from weberror.evalexception import make_eval_exception
+
 from django.core.handlers.wsgi import WSGIHandler
 from django import conf
 
@@ -139,4 +141,15 @@ def django_multi_factory(global_config, **local_config):
     if not local_config: local_config = {}
     local_config['multi'] = 'true'
     return django_factory(global_config, **local_config)
+
+
+def weberror_wrapper(app, global_config, **local_config):
+    keys = ['error_email', 'from_address', 'show_exceptions',
+            'smtp_server', 'smtp_use_tls', 'smtp_username ',
+            'smtp_password ', 'error_subject_prefix',]
+    for k in keys:
+        if k in local_config:
+            del local_config[k]
+    return make_eval_exception(app, global_config, **local_config)
+
 

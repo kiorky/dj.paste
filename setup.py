@@ -44,6 +44,7 @@ setup(name='dj.paste',
       package_dir = {'': 'src'},
       install_requires=[
           #'setuptools',
+          "WebError",
           'WebOb',
           'PasteScript',
           'Django',

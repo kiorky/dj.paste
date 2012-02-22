@@ -4,7 +4,7 @@ Changelog
 1.11 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- add weberror wrapper
 
 
 1.10 (2012-02-22)
