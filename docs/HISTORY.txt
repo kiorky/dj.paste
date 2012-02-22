@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.10 (unreleaded)
+-------------------
+* proper release
+
 1.8
 ---------
 * add a mono factory (and now the default)
