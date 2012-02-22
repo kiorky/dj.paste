@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.8'
+version = '1.9'
 
 def read(*rnames):
     setupdir =  os.path.dirname( os.path.abspath(__file__))
@@ -10,7 +10,7 @@ def read(*rnames):
     ).read()
 
 p = os.path.dirname(__file__)
-README =read(p,'README.txt')
+README =read(p,'README.rst')
 CHANGELOG  = read(p, 'docs', 'HISTORY.txt')
 TESTS  = read(p, 'src', 'dj', 'paste', 'README.txt')
 
@@ -34,7 +34,7 @@ setup(name='dj.paste',
       keywords='',
       author='Mathieu Pasquet',
       author_email='kiorky@cryptelium.net',
-      url='http://git.minitage.org/git/others/dj.paste',
+      url='https://github.com/kiorky/dj.paste',
       license='BSD',
       namespace_packages=['dj', 'dj.paste'],
       include_package_data=True,
