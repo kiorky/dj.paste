@@ -3,13 +3,6 @@ Changelog
 
 1.12 (unreleased)
 -----------------
-
-- Nothing changed yet.
-
-
-1.11 (2012-02-22)
------------------
-
 - add weberror wrapper
 
 
